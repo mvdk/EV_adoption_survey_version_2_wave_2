@@ -1,0 +1,296 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block styles %}
+<style type="text/css">
+
+    .container {
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+    }
+
+    .col-12 {
+        /* Adjust the max-width and other styles as needed */
+        max-width: 800px; /* Example value, adjust based on your design */
+        width: 100%;
+        display: flex;
+        flex-direction: column; /* Set cards to stack vertically */
+        align-items: center; /* Center cards horizontally within the column */
+    }
+
+    .btn-choice {
+        color: white;
+    }
+
+    /* .btn-custom {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        margin: 5px;
+    } */
+
+    .btn-custom {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 12px 24px;  /* Ensures padding is equal */
+        cursor: pointer;
+        margin: 5px;
+        font-size: 16px; /* Ensures text size is uniform */
+        width: 100px; /* ✅ Sets a fixed button width */
+        height: 50px; /* ✅ Sets a fixed button height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-radius: 8px; /* Optional: rounded edges for better UI */
+    }
+
+    .btn-custom:hover {
+        background-color: #0056b3;
+    }
+
+    .button-container {
+        margin-top: 10px; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .question-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .white-screen-overlay {
+        position: fixed;
+        top: 0px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.8);
+        z-index: 999;
+        display: flex;
+    }
+
+.block-instruction-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, .9);
+    z-index: 1000;
+}
+
+.card-content {
+    max-width: 80%;
+    text-align: left;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+@media (max-height: 600px) {
+    .block-instruction-card {
+        top: 0;
+        transform: translateY(0);
+    }
+
+    .card-content {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .btn-custom {
+        width: 120px; /* Smaller screens get slightly smaller buttons */
+        height: 45px;
+    }
+}
+
+
+.block-instruction-card p {
+    margin-bottom: 15px;
+}
+
+.block-instruction-card button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px
+}
+
+.block-instruction-card button:hover {
+    background-color: #0056b3;
+}
+
+#choiceQuestion {
+    padding: 50px;
+    left: 50%; /* Adjust as needed */
+  }
+
+
+</style>
+
+
+{% endblock %}
+
+{% block content %}
+{% if is_first_trial_of_block %}
+<div class="white-screen-overlay" id="whiteScreenOverlay"></div>
+    <div class="block-instruction-card" id="blockInstructionCard" style="display: none;">
+        <div class="card-content">
+            {% if completed_block %}
+                <p style="font-size: 1rem"><b>{{ Lexicon.affirmative_text }}</b></p>
+            {% endif %}
+            {{ include_sibling 'instruction_disruption.html' }}
+            <div id="hideInstructionButton" class="btn btn-primary" >{{ Lexicon.button_start }}</div>
+        </div>
+    </div>
+{% endif %}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <p id="offerTitle">{{ Lexicon.product_offer_no }} No. 1</p>
+            <img style="width:100%; margin: 10px; max-width:300px;" src="{% static 'global/images/electric.webp' %}">
+            <table class="table table-bordered" style="width: 60%; margin: auto;">
+                <thead>
+                    <tr>
+                        <th>{{ Lexicon.ev_attribute }}</th>
+                        <th>{{ Lexicon.ev_attribute_level }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for attribute, level in attributes.items %}
+                    <tr>
+                        <td>{{ attribute }}</td>
+                        <td>{{ level }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="question-container">
+
+        <span id="choiceQuestion" style="font-size: 16px; text-align: center"> {{ Lexicon.product_question }}</span>
+
+        <div class="button-container">
+
+            <button id="choice1Button" class="btn btn-custom">{{ Lexicon.yes }}</button>
+            <button id="choice2Button" class="btn btn-custom">{{ Lexicon.no }}</button>            
+
+        </div>
+    
+        <input class="form-check-input" type="radio" name="choice" id="choice1" style="display: none" value="Yes">
+        <input class="form-check-input" type="radio" name="choice" id="choice2" style="display: none" value="No">
+
+        {{ formfield_errors 'choice' }}
+
+
+        </div>
+    </div>
+    </div>
+
+
+<div class="row mt-4">
+    <div class="col-6 offset-3 text-center">
+        <button id="nextButton" class="btn btn-primary" style="display: none;"> {{ Lexicon.next }}</button>
+        <input type="hidden" name="response_time" id="response_time"/>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+{% block scripts %}
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+    // Get the title element
+    var titleElement = document.getElementById("offerTitle");
+
+    // Get the round number from the backend
+    var roundNumber = {{ round_number }};
+    var pageLoadCount = (roundNumber - 1) % 18 + 1;
+
+    // Set the title dynamically
+    var titlePrefix = "{{ Lexicon.product_offer_no }}";
+    titleElement.textContent = titlePrefix + " No. " + pageLoadCount + " / 18  ";
+
+    // Save to localStorage
+    localStorage.setItem("pageLoadCount", pageLoadCount.toString());
+
+    // **Button & Radio Selection**
+    const choice1Button = document.getElementById("choice1Button");
+    const choice2Button = document.getElementById("choice2Button");
+    const choice1Radio = document.getElementById("choice1");
+    const choice2Radio = document.getElementById("choice2");
+
+    
+
+    // **Trigger Next Function**
+    function triggerNext() {
+        console.log("Next button clicked");
+    }
+
+    // **Attach Event Listeners**
+    if (choice1Button && choice1Radio) {
+        choice1Button.addEventListener("click", function () {
+            choice1Radio.click();
+            triggerNext();
+        });
+    }
+
+    if (choice2Button && choice2Radio) {
+        choice2Button.addEventListener("click", function () {
+            choice2Radio.click();
+            triggerNext();
+        });
+    }
+
+
+});
+
+   
+
+// Show block instruction card on the first trial of each block
+    {% if is_first_trial_of_block %}
+    $(document).ready(function () {
+        $("#blockInstructionCard").fadeIn();
+        $("#whiteScreenOverlay").fadeIn();  // Show the white-screen overlay
+        $("#hideInstructionButton").click(function () {
+            $("#blockInstructionCard").fadeOut();
+            $("#whiteScreenOverlay").fadeOut();  // Hide the white-screen overlay
+        });
+    });
+{% endif %}
+
+</script>
+
+<div style="height: 100px;"></div>
+{% endblock %}

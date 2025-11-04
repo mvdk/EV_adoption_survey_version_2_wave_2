@@ -1,0 +1,47 @@
+{% block title %}
+  {{ Lexicon.introduction_title }}
+{% endblock %}
+
+{% block styles %}
+  <link href="{{ static 'global/General.css' }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<div>
+<p style="text-align:left; font-size: 1.2rem;">
+    <b>{{ Lexicon.product_intro_title }}</b>
+</p>
+</div>
+
+<div>
+<p style="text-align:left; font-size: 0.95rem;">
+    {{ Lexicon.product_intro_text1 }}
+    {{ Lexicon.product_intro_text3 }}
+</p>
+</div>
+
+<div>
+<ul style="text-align:left;  font-size: 0.95rem">
+    <li><b>{{ Lexicon.investment_cost }}</b> {{ Lexicon.investment_cost_text }}</li>
+    <br><li><b> {{ Lexicon.electricity_cost }}</b> {{ Lexicon.electricity_cost_text }}</li>
+    <br><li><b> {{ Lexicon.gasoline_cost }}</b> {{ Lexicon.gasoline_cost_text }}</li>
+    <br><li><b> {{ Lexicon.range }}</b> {{ Lexicon.range_text }}</li>
+    <br><li><b> {{ Lexicon.adopters }}</b> {{ Lexicon.adopters_text }}</li>
+    <br><li><b> {{ Lexicon.ice_sales_ban_adoption }}</b> {{ Lexicon.ice_sales_ban_adoption_text }}</li>
+</ul>
+</div>
+
+<div>
+<p style="text-align:left; font-size: 0.95rem;">
+    <b> {{ Lexicon.product_intro_text4 }}</b>
+    <br><br>
+    <b>{{ Lexicon.product_intro_text5 }}</b></p>
+</div>
+
+
+<button style="float: right; margin-top: 2vh;" class="otree-btn-next btn btn-primary" >{{ Lexicon.next }}</button>
+
+<div style="height: 100px;"></div>
+
+{{ endblock }}

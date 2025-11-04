@@ -1,0 +1,60 @@
+{% block title %}
+  {{ Lexicon.information_title }}
+{% endblock %}
+
+
+{% block styles %}
+  <link href="{{ static 'global/General.css' }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+  <div>
+    <p>{{ Lexicon.consent_p1 }}</p>
+    <p>{{ Lexicon.consent_p2 }}</p>
+    <p><strong>{{ Lexicon.duration }}</strong> {{ Lexicon.consent_p3 }}</p>
+    <p><strong>{{ Lexicon.risks }}</strong> {{ Lexicon.consent_p4 }}</p>
+    <p><strong>{{ Lexicon.privacy }}</strong> {{ Lexicon.consent_p5 }}</p>
+    <p><strong>{{ Lexicon.consent_p6 }}</strong> {{ Lexicon.consent_p7 }}</p>
+    <p>{{ Lexicon.consent_p8 }}</p>
+    <p>{{ Lexicon.consent_p9 }}</p>
+    <ul>
+      <li>{{ Lexicon.consent_bullet4 }}</li>
+      <li>{{ Lexicon.consent_bullet5 }}</li>
+    </ul>
+    <p>{{ Lexicon.consent_p10 }}</p>
+
+    <table>
+      <tr>
+        <td><input name="dataScience" id="id_dataScience" type="checkbox" class="larger" onchange="checkNext()"></td>
+        <td>{{ Lexicon.data_consent1 }}</td>
+      </tr>
+      <tr>
+        <td><input name="dataTeach" id="id_dataTeach" type="checkbox" class="larger" onchange="checkNext()"></td>
+        <td>{{ Lexicon.data_consent2 }}</td>
+      </tr>
+    </table>
+
+  </div>
+
+<button style="float: right; margin-top: 2vh;" class="otree-btn-next btn btn-primary" disabled id="consent-next">{{ Lexicon.next }}</button>
+
+<div style="height: 100px;"></div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function checkNext() {
+        if ($("#id_dataScience")[0].checked && $("#id_dataTeach")[0].checked) {
+            $("#consent-next").attr("disabled", false)
+        } else {
+            $("#consent-next").attr("disabled", true)
+        }
+    }
+</script>
+
+
+
+{% endblock %}
+

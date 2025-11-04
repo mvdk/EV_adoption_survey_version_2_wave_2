@@ -1,0 +1,21 @@
+{% block title %}
+  {{ Lexicon.end_title }}
+{% endblock %}
+
+{% block styles %}
+  <link href="{{ static 'global/General.css' }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+  <div>
+    <br><p>{{ Lexicon.thanks }}</p><br>
+    <p><b>{{ Lexicon.redirect_instructions }}</b></p>
+    <br>
+  </div>
+
+<button class="btn btn-primary btn-large reps" style="margin-top:3vh;" type="button" onclick="window.location.href='{{ redirect_url }}'"> {{ Lexicon.finish }} </button>
+
+<div style="height: 100px;"></div>
+
+{{ endblock }}

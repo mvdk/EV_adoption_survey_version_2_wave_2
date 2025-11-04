@@ -1,0 +1,30 @@
+{% load otree static %}
+{% block styles %}
+<link href="{% static 'global/css/Carbontask.css' %}" rel="stylesheet">
+{% endblock %}
+
+<h3 style="color: #007bff; font-size: 1.4rem"> {{ Lexicon.disruption_intro_title }}</h3>
+<br>
+<div>
+<p style="text-align:left; font-size: 0.95rem;">
+    {{ Lexicon.disruption_intro_text }}
+</p>
+<p style="text-align:left; font-size: 0.95rem;">
+    {{ Lexicon.disruption_intro_text1 }}
+    {{ Lexicon.disruption_intro_text3 }}
+</p>
+</div>
+
+<div>
+<ul style="text-align:left;  font-size: 0.95rem">
+    <li><b>{{ Lexicon.investment_cost_high }}</b> {{ Lexicon.investment_cost_high_text }}</li>
+    <br><li><b> {{ Lexicon.electricity_gasoline_cost }}</b> {{ Lexicon.electricity_gasoline_cost_text }}</li>
+</ul>
+</div>
+
+<div>
+<p style="text-align:left; font-size: 0.95rem;">
+    {{ Lexicon.disruption_intro_text4 }}
+    <br><br>
+    <b>{{ Lexicon.disruption_intro_text5 }}</b></p>
+</div>
