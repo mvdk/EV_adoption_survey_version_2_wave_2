@@ -57,13 +57,25 @@ class MobileCheck(Page):
         return {
             'Lexicon': player.session.introLexi,
         }
+        
+class MobileRedirect(Page):
+    @staticmethod
+    def is_displayed(player: Player):
+        # Only show this page if the user is on mobile
+        return player.is_mobile
 
-    def error_message(player: Player, values):
-        if values['is_mobile']:
-            return player.session.introLexi.mobile
+    @staticmethod
+    def vars_for_template(player: Player):
+        participant_id = player.participant.label
+        url = (
+            f"https://www.panelservice.com/ps/se.ashx?"
+            f"s=6C2369B275393EA2&pid=uba25045t2&int=so&eid={participant_id}"
+        )
+        return {"redirect_url": url}
 
 
 page_sequence = [
     MobileCheck,
-    introduction_consent
+    MobileRedirect,
+    #introduction_consent
 ]
