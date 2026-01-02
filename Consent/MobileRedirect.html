@@ -1,0 +1,14 @@
+{{ block title }}
+Redirecting...
+{{ endblock }}
+
+{{ block content }}
+
+<script>
+    // Immediately redirect the participant
+    window.location.href = "{{ redirect_url }}";
+</script>
+
+<p>If you are not redirected automatically, <a href="{{ redirect_url }}">click here</a>.</p>
+
+{{ endblock }}
