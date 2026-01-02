@@ -2,107 +2,37 @@ from os import environ
 
 author = 'Mart van der Kam & Anne Günther'
 
-
 SESSION_CONFIGS = [
     dict(
-       name='USA_small',
-       display_name="USA_Intervention_Study_small",
+       name='USA',
+       display_name="USA_Intervention_Study",
        num_demo_participants=5,
        language="usa",
-       car_size_future="small",
        app_sequence=['Consent',
                      'Introduction',
                      'Task',
                      'End',]
      ),
     dict(
-       name='Germany_small',
-       display_name="Germany_Intervention_Study_small",
+       name='Germany',
+       display_name="Germany_Intervention_Study",
        num_demo_participants=5,
        language="de",
-       car_size_future="small",
        app_sequence=['Consent',
                      'Introduction',
                      'Task',
                      'End',]
      ),
     dict(
-        name='SouthAfrica_small',
-        display_name="SA_Intervention_Study_small",
+        name='SouthAfrica',
+        display_name="SA_Intervention_Study",
         num_demo_participants=5,
         language="sa",
-        car_size_future="small",
         app_sequence=['Consent',
                       'Introduction',
                       'Task',
                       'End',]
-    ),
-        dict(
-       name='USA_medium',
-       display_name="USA_Intervention_Study_medium",
-       num_demo_participants=5,
-       language="usa",
-       car_size_future="medium",
-       app_sequence=['Consent',
-                     'Introduction',
-                     'Task',
-                     'End',]
-     ),
-    dict(
-       name='Germany_medium',
-       display_name="Germany_Intervention_Study_medium",
-       num_demo_participants=5,
-       language="de",
-       car_size_future="medium",
-       app_sequence=['Consent',
-                     'Introduction',
-                     'Task',
-                     'End',]
-     ),
-    dict(
-        name='SouthAfrica_medium',
-        display_name="SA_Intervention_Study_medium",
-        num_demo_participants=5,
-        language="sa",
-        car_size_future="medium",
-        app_sequence=['Consent',
-                      'Introduction',
-                      'Task',
-                      'End',]
-    ),
-        dict(
-       name='USA_large',
-       display_name="USA_Intervention_Study_large",
-       num_demo_participants=5,
-       language="usa",
-       car_size_future="large",
-       app_sequence=['Consent',
-                     'Introduction',
-                     'Task',
-                     'End',]
-     ),
-    dict(
-       name='Germany_large',
-       display_name="Germany_Intervention_Study_large",
-       num_demo_participants=5,
-       language="de",
-       car_size_future="large",
-       app_sequence=['Consent',
-                     'Introduction',
-                     'Task',
-                     'End',]
-     ),
-    dict(
-        name='SouthAfrica_large',
-        display_name="SA_Intervention_Study_large",
-        num_demo_participants=5,
-        language="sa",
-        car_size_future="large",
-        app_sequence=['Consent',
-                      'Introduction',
-                      'Task',
-                      'End',]
-    ),
+    )    
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
