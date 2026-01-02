@@ -13,34 +13,17 @@ class Subsession(BaseSubsession):
 
 
 def creating_session(subsession: Subsession):
-    if subsession.session.config['language'] == "de" and subsession.session.config['car_size_future'] == "small":
-        from .lexicon_de_small import Lexicon
+    if subsession.session.config['language'] == "de":
+        from .lexicon_de import Lexicon
         subsession.session.myLangCode = "_de"
-    elif subsession.session.config['language'] == "de" and subsession.session.config['car_size_future'] == "medium":
-        from .lexicon_de_medium import Lexicon
-        subsession.session.myLangCode = "_de"
-    elif subsession.session.config['language'] == "de" and subsession.session.config['car_size_future'] == "large":
-        from .lexicon_de_large import Lexicon
-        subsession.session.myLangCode = "_de"
-    elif subsession.session.config['language'] == "sa" and subsession.session.config['car_size_future'] == "small":
-        from .lexicon_sa_small import Lexicon
+    elif subsession.session.config['language'] == "sa":
+        from .lexicon_sa import Lexicon
         subsession.session.myLangCode = "_sa"
-    elif subsession.session.config['language'] == "sa" and subsession.session.config['car_size_future'] == "medium":
-        from .lexicon_sa_medium import Lexicon
-        subsession.session.myLangCode = "_sa"
-    elif subsession.session.config['language'] == "sa" and subsession.session.config['car_size_future'] == "large":
-        from .lexicon_sa_large import Lexicon
-        subsession.session.myLangCode = "_sa"
-    elif subsession.session.config['language'] == "usa" and subsession.session.config['car_size_future'] == "small":
-        from .lexicon_usa_small import Lexicon
-        subsession.session.myLangCode = "_usa"
-    elif subsession.session.config['language'] == "usa" and subsession.session.config['car_size_future'] == "medium":
-        from .lexicon_usa_medium import Lexicon
-        subsession.session.myLangCode = "_usa"
     else:
-        from .lexicon_usa_large import Lexicon
+        from .lexicon_usa import Lexicon
         subsession.session.myLangCode = "_usa"
     subsession.session.introLexi = Lexicon
+
 
 
 class Group(BaseGroup):
