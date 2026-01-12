@@ -5,7 +5,7 @@ class Lexicon:
 
       # instruction_product
     product_intro_title = "Bitte lesen Sie den folgenden Text sorgfältig:"
-    product_intro_text1 = "In der ersten Phase dieser Studie haben Sie verschiedene Angebote für <b>Elektrofahrzeuge</b> bewertetu und entschieden, ob Sie jedes Auto kaufen würden oder nicht.<br><br>"
+    product_intro_text1 = "In der ersten Phase dieser Studie haben Sie verschiedene Angebote für <b>Elektrofahrzeuge</b> bewertet und entschieden, ob Sie jedes Auto kaufen würden oder nicht.<br><br>"
     product_intro_text3 = "Die folgenden Eigenschaften unterschieden sich zwischen den Angeboten:"
 
     investment_cost = "<u>Kaufpreis:</u>"
