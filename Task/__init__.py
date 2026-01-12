@@ -186,7 +186,7 @@ class TaskPage(Page):
 
        # Conditionally choose the attributes lists based on their chosen car size future catagory of the previous wave (participant_id) and block
         participant_id = player.participant.label
-        car_size_future_small_IDs = ['test-small',
+        car_size_future_small_IDs = ['test-small','FFE1DC0E-FF7D-479D-B4BB-A1E14E4AEA88','870AA1DF-A1AD-45DA-9B67-4CF31F25079F','34ED9041-1CE5-4DFE-B7BC-297DFE86B56C',
                                      '8B942464-02A1-422B-B22E-C4E5E5860A09','216B73FC-61DB-4F6F-BACA-75F032B0E4B0','34CF9468-107A-43F2-B190-DBFB56ADE0EB','074CB595-AE70-470A-956A-07762ECCC76C',
                                      '2975A3C5-D127-4A63-8689-31D21711327B','6FCE484B-76B4-4A42-99E1-44B06C51E16F','1E7DC7C1-9536-4A21-A7B7-96B27AD5B071','B4E8E7A8-332B-4270-8EE2-104021D0CE21',
                                      '7523913E-0279-45CA-A3C1-00D373D7ECC8','7BACA641-B33A-40C1-9E2B-E7B1B5C6666E','8A1DFC02-4919-4767-AC46-95588D890D4C','91673D75-F0BD-483D-B7BF-8F265AF960AE',
